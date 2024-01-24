@@ -45,3 +45,22 @@ const skillsArray = [
     type: 'backend',
   },
 ];
+
+// Add skills dynamically
+// Calculate years of experience automatically
+const currentYear = new Date().getFullYear() // get current year
+
+const createSkillsList = (listItem) => `<li class="skills__column" data-name="${listItem.name}" data-type="${listItem.type}">
+<h2 class="skills__title">${listItem.name}</h2>
+<span class="skills__years">${currentYear - listItem.experience} Years</span>
+</li>`;
+
+const skillsList = skillsArray.map((skill) => createSkillsList(skill)).join("");
+
+// console.log(skillsList);
+
+const ul = `<ul class="skills__list">${skillsList}</ul>`
+
+const skillsSection = document.querySelector("#skills");
+
+skillsSection.insertAdjacentHTML("beforeend", ul);
