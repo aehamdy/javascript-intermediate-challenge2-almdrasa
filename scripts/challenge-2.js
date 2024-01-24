@@ -46,8 +46,8 @@ const skillsArray = [
   },
 ];
 
-// Add skills dynamically
-// Calculate years of experience automatically
+// Add skills dynamically ✅
+// Calculate years of experience automatically check ✅
 const currentYear = new Date().getFullYear() // get current year
 
 const createSkillsList = (listItem) => `<li class="skills__column" data-name="${listItem.name}" data-type="${listItem.type}">
@@ -64,3 +64,14 @@ const ul = `<ul class="skills__list">${skillsList}</ul>`
 const skillsSection = document.querySelector("#skills");
 
 skillsSection.insertAdjacentHTML("beforeend", ul);
+
+
+/* ✨ Bonus ✨ */
+// Add filters to skills section ✅
+document.querySelectorAll(".skills__button").forEach((element) => { 
+  element.addEventListener("click", () => { 
+    document.querySelector(".skills__button--isActive").classList.remove("skills__button--isActive");
+    element.classList.add("skills__button--isActive");
+    document.querySelector(".skills__list").classList = `skills__list ${element.dataset.type}`;
+  })
+})
